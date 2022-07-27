@@ -96,7 +96,7 @@ def _create_root_task_collection():
 # ---------
 
 
-@task(name="check-reqs")
+@task(name="check-reqs_new")
 def check_setup_prerequisites(c):
     _failed = []
 
@@ -122,8 +122,19 @@ def check_setup_prerequisites(c):
     if _failed:
         raise RuntimeError(f"Failed to find the following binaries in path : {_failed}")
 
+@task(name="radon_score")
+def rando(c,file=None):
+    if file:
+        check_type = str(file)[-2:].lower()
+        if check_type == "py":
+            c.run(f"radon cc {file}")
+        else:
+            c.run(f"radon cc --include-ipynb --ipynb-cells {file}")
+    else:
+        print("Please Provide the file name !!")
 
-_create_task_collection("debug", check_setup_prerequisites)
+
+_create_task_collection("debug", check_setup_prerequisites,rando)
 
 
 # Dev tasks
