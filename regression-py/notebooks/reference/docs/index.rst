@@ -15,6 +15,7 @@ Welcome to Assignment 5.1's documentation!
    01_data_discovery.ipynb
    02_data_processing.ipynb
    03_model_experimenting.ipynb
+   housing.ipynb
 
 
 

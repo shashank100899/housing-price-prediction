@@ -3,79 +3,115 @@ datasets:
     orders:
       type: ds
       format: csv
-      uri: ${core.data_base_path}/raw/sales/orders.csv
+      uri: data/raw/sales/orders.csv
+      driver_params: {}
+      
+    housing:
+      type: ds
+      format: csv
+      uri: data/raw/housing/housing.csv
       driver_params: {}
   
     product:
       type: ds
       format: csv
-      uri: ${core.data_base_path}/raw/sales/prod_master.csv
+      uri: data/raw/sales/prod_master.csv
       driver_params: {}
   
   cleaned:
     orders:
       type: ds
       format: parquet
-      uri: ${core.data_base_path}/cleaned/sales/orders.parquet
+      uri: data/cleaned/sales/orders.parquet
       driver_params: {}
 
     product:
       type: ds
       format: parquet
-      uri: ${core.data_base_path}/cleaned/sales/product.parquet
+      uri: data/cleaned/sales/product.parquet
       driver_params: {}
 
     sales:
       type: ds
       format: parquet
-      uri: ${core.data_base_path}/cleaned/sales/sales.parquet
+      uri: data/cleaned/sales/sales.parquet
       driver_params: {}
 
   processed:
     sales:
       type: ds
       format: parquet
-      uri: ${core.data_base_path}/processed/sales/sales.parquet
+      uri: data/processed/sales/sales.parquet
       driver_params: {}
 
   train:
-    sales:
+    housing:
       features:
         type: ds
         format: parquet
-        uri: ${core.data_base_path}/train/sales/features.parquet
+        uri: housing reposts/train/housing/features.parquet
         driver_params:
           save:
             index: False
       target:
         type: ds
         format: parquet
-        uri: ${core.data_base_path}/train/sales/target.parquet
+        uri: housing reposts/train/housing/target.parquet
+        driver_params:
+          save:
+            index: False
+    sales:
+      features:
+        type: ds
+        format: parquet
+        uri: housing reposts/train/sales/features.parquet
+        driver_params:
+          save:
+            index: False
+      target:
+        type: ds
+        format: parquet
+        uri: housing reposts/train/sales/target.parquet
         driver_params:
           save:
             index: False
   test:
-    sales:
+    housing:
       features:
         type: ds
         format: parquet
-        uri: ${core.data_base_path}/test/sales/features.parquet
+        uri: housing reposts/test/housing/features.parquet
         driver_params:
           save:
             index: False
       target:
         type: ds
         format: parquet
-        uri: ${core.data_base_path}/test/sales/target.parquet
+        uri: housing reposts/test/housing/target.parquet
+        driver_params:
+          save:
+            index: False
+    sales:
+      features:
+        type: ds
+        format: parquet
+        uri: housing reposts/test/sales/features.parquet
+        driver_params:
+          save:
+            index: False
+      target:
+        type: ds
+        format: parquet
+        uri: housing reposts/test/sales/target.parquet
         driver_params:
           save:
             index: False
   score:
-    sales:
+    housing:
       output:
         type: ds
         format: parquet
-        uri: ${core.data_base_path}/test/sales/scored_output.parquet
+        uri: housing reposts/housing/scored_output.parquet
         driver_params:
           save:
             index: False
